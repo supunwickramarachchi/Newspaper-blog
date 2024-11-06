@@ -19,7 +19,7 @@ This is a Django-based news blog application where users can create, edit, and d
 ## Installation
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/newspaper_project.git
+    git clone https://github.com/supunwickramarachchi/newspaper_project.git
     cd newspaper_project
     ```
 
