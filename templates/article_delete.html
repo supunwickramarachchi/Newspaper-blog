@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Card for the Edit Form -->
+                <div class="card shadow-lg">
+                    <!-- Card Header -->
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3>Delete Article</h3>
+                        <p class="mb-0">Are you sure you want to delete?</p>
+                    </div>
+
+                    <!-- Card Body with the Form -->
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <!-- Article Title Field -->
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Article Title</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter article title" value="{{ article.title }}">
+                            </div>
+
+                            <!-- Form Buttons -->
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'article_detail' article.pk %}" class="btn btn-outline-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-danger">Confirm</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Card Footer -->
+                    <div class="card-footer text-muted text-center">
+                        <small>Verify before you delete the article</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %} 

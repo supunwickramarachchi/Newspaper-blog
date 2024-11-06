@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <!-- Main Card -->
+                    <div class="card text-center shadow-lg">
+                        <!-- Card Header with Name -->
+                        <div class="card-header bg-primary text-white">
+                            <br>
+                            <h2 class="mb-0">Hi! Welcome, {{ user.username }}</h2>
+                            <br>
+                        </div>
+                        <br>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <p class="lead">Explore our articles and stay up to date with the latest news and stories.</p>
+                            <br>
+                            <!-- Button to All Articles -->
+                            <a href="{% url 'article_list' %}" class="btn btn-lg btn-success">View All Articles</a>
+                        </div>
+                        <br><br>
+                        <!-- Card Footer with Extra Info -->
+                        <div class="card-footer text-muted">
+                            {% if last_updated_article %}
+                                <small>Last Updated: {{ last_updated }}</small>
+                                <a href="{% url 'article_detail' last_updated_article.pk %}">{{ last_updated_article.title }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <h3>You are not logged in, Please try to log in...</h3> <br>
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+        <a href="{% url 'signup' %}" class="btn btn-warning">Signup</a>
+    {% endif %}
+{% endblock content %}

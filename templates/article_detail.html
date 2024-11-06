@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card shadow-sm">
+            <!-- Card Header with Article Title -->
+            <div class="card-header bg-dark text-white">
+                <h3 class="mb-0">{{ object.title }}</h3>
+                <p class="mb-0 text-white-50 small">by {{ object.author }} | {{ object.date }}</p>
+            </div>
+
+            <!-- Card Body with Article Content -->
+            <div class="card-body">
+                <p class="card-text">
+                    {{ object.body }}
+                </p>
+            </div>
+
+            <!-- Buttons Section in the Footer -->
+            <div class="card-footer d-flex justify-content-between">
+                <a href="{% url 'article_edit' article.pk %}" class="btn btn-outline-primary">Edit</a>
+                <div>
+                    <a href="{% url 'article_delete' article.pk %}" class="btn btn-warning me-2">Delete</a>
+                    <a href="{% url 'article_list' %}" class="btn btn-danger">All Articles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %} 
